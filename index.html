@@ -1,0 +1,73 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Моё Приложение</title>
+  <style>
+    @font-face {
+      font-family: 'TerminalFont';
+      src: url('american_typewriter_rus_by_me.ttf') format('truetype');
+    }
+
+    body {
+      margin: 0;
+      padding: 2rem;
+      background-color: #000;
+      color: #00FF00;
+      font-family: 'TerminalFont', monospace;
+      font-size: 1rem;
+      line-height: 1.5;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: auto;
+    }
+
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    p {
+      margin-bottom: 1.5rem;
+    }
+
+    .download-btn {
+      display: inline-block;
+      padding: 0.8rem 1.5rem;
+      background-color: #001100;
+      color: #00FF00;
+      border: 1px solid #00FF00;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background 0.2s ease;
+    }
+
+    .download-btn:hover {
+      background-color: #002200;
+    }
+
+    @media (max-width: 600px) {
+      body {
+        padding: 1rem;
+        font-size: 1rem;
+      }
+
+      h1 {
+        font-size: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Добро пожаловать!</h1>
+    <p>Здесь вы можете скачать моё Android-приложение. Оно работает в терминальном стиле и постоянно улучшается!</p>
+    <a href="myapp.apk" class="download-btn">📦 Скачать приложение</a>
+  </div>
+</body>
+</html>
