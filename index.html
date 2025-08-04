@@ -1,73 +1,274 @@
-
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Моё Приложение</title>
-  <style>
-    @font-face {
-      font-family: 'TerminalFont';
-      src: url('american_typewriter_rus_by_me.ttf') format('truetype');
-    }
-
-    body {
-      margin: 0;
-      padding: 2rem;
-      background-color: #000;
-      color: #00FF00;
-      font-family: 'TerminalFont', monospace;
-      font-size: 1rem;
-      line-height: 1.5;
-    }
-
-    .container {
-      max-width: 800px;
-      margin: auto;
-    }
-
-    h1 {
-      font-size: 2rem;
-      margin-bottom: 1rem;
-    }
-
-    p {
-      margin-bottom: 1.5rem;
-    }
-
-    .download-btn {
-      display: inline-block;
-      padding: 0.8rem 1.5rem;
-      background-color: #001100;
-      color: #00FF00;
-      border: 1px solid #00FF00;
-      border-radius: 6px;
-      text-decoration: none;
-      font-weight: bold;
-      transition: background 0.2s ease;
-    }
-
-    .download-btn:hover {
-      background-color: #002200;
-    }
-
-    @media (max-width: 600px) {
-      body {
-        padding: 1rem;
-        font-size: 1rem;
-      }
-
-      h1 {
-        font-size: 1.5rem;
-      }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Opella</title>
+    <style>
+        @font-face {
+            font-family: 'AmericanTypewriter';
+            src: url('AmericanTypewriterRegular.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background-color: #000;
+            color: #0f0;
+            font-family: 'AmericanTypewriter', 'Courier New', monospace;
+            line-height: 1.6;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            overflow-x: hidden;
+        }
+        
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 10% 20%, rgba(20, 100, 20, 0.1) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(30, 150, 30, 0.1) 0%, transparent 20%);
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        header {
+            text-align: center;
+            padding: 40px 0;
+            border-bottom: 1px dashed #0f0;
+            margin-bottom: 40px;
+            position: relative;
+        }
+        
+        h1 {
+            font-size: 3.5rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+            text-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
+        }
+        
+        .tagline {
+            font-size: 1.2rem;
+            opacity: 0.8;
+        }
+        
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+        
+        .news-card {
+            background: rgba(15, 30, 15, 0.3);
+            border: 1px solid #0a5;
+            padding: 25px;
+            border-radius: 5px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .news-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 255, 0, 0.2);
+            border-color: #0f0;
+        }
+        
+        .news-date {
+            color: #0c6;
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+            display: block;
+        }
+        
+        .apps-section {
+            margin: 60px 0;
+        }
+        
+        .apps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+        
+        .app-card {
+            background: rgba(10, 25, 10, 0.4);
+            border: 1px solid #0a5;
+            padding: 30px;
+            text-align: center;
+            border-radius: 5px;
+        }
+        
+        .app-icon {
+            width: 80px;
+            height: 80px;
+            background: #0a3;
+            border-radius: 20px;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+        }
+        
+        .download-btn {
+            display: inline-block;
+            background: transparent;
+            color: #0f0;
+            border: 2px solid #0f0;
+            padding: 12px 30px;
+            margin-top: 20px;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: bold;
+            transition: all 0.3s;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .download-btn:hover {
+            background: rgba(0, 255, 0, 0.1);
+            box-shadow: 0 0 15px rgba(0, 255, 0, 0.4);
+        }
+        
+        .download-btn::before {
+            content: "↓";
+            margin-right: 10px;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 40px 0;
+            margin-top: 60px;
+            border-top: 1px dashed #0f0;
+            color: #0a5;
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 768px) {
+            .news-grid, .apps-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            h1 {
+                font-size: 2.5rem;
+            }
+        }
+        
+        /* Анимации */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .news-card, .app-card {
+            animation: fadeIn 0.6s ease-out forwards;
+            opacity: 0;
+        }
+        
+        .news-card:nth-child(2) { animation-delay: 0.2s; }
+        .news-card:nth-child(3) { animation-delay: 0.4s; }
+        .app-card:nth-child(1) { animation-delay: 0.2s; }
+        .app-card:nth-child(2) { animation-delay: 0.4s; }
+        .app-card:nth-child(3) { animation-delay: 0.6s; }
+        
+        /* Эффект печатной машинки для заголовка */
+        .typewriter {
+            overflow: hidden;
+            border-right: 0.15em solid #0f0;
+            white-space: nowrap;
+            margin: 0 auto;
+            letter-spacing: 0.15em;
+            animation: typing 3.5s steps(30, end), blink-caret 0.75s step-end infinite;
+        }
+        
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+        
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: #0f0; }
+        }
+    </style>
 </head>
 <body>
-  <div class="container">
-    <h1>Добро пожаловать!</h1>
-    <p>Здесь вы можете скачать моё Android-приложение. Оно работает в терминальном стиле и постоянно улучшается!</p>
-    <a href="Opella.apk" class="download-btn">📦 Скачать приложение</a>
-  </div>
+    <header>
+        <h1><span class="typewriter">DevNews</span></h1>
+        <p class="tagline">Последние новости и обновления моих приложений</p>
+    </header>
+    
+    <main>
+        <section class="news-section">
+            <h2>Последние новости</h2>
+            <div class="news-grid">                           
+                <article class="news-card">
+                    <span class="news-date">5 августа 2025</span>
+                    <h3>Планы на будущее</h3>
+                    <p>Работаю над внедрением новых функций для комфотного использовния приложения</p>
+                </article>
+            </div>
+        </section>
+        
+        <section class="apps-section">
+            <h2>Мои приложения</h2>
+            <div class="apps-grid">
+                <div class="app-card">
+                    <div class="app-icon"></div>
+                    <h3>Opella</h3>
+                    <p>Менеджер с облачной интеграцией и шифрованием данных.</p>
+                    <a href="Opella.apk" class="download-btn">Скачать</a>
+                </div>
+                
+                <div class="app-card">
+                    <div class="app-icon">PE</div>
+                    <h3>ERROR</h3>
+                    <p>-------------</p>
+                    <a href="#" class="download-btn">Скачать</a>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <footer>
+        <p>© 2025 DevNews | Все права защищены</p>
+        <p>Контакты: baryshevpavel2004@gmail.com | Поддержка: </p>
+    </footer>
+
+    <script
+        // Добавляем эффект загрузки
+        document.addEventListener('DOMContentLoaded', function() {
+            // Задержка для анимаций
+            setTimeout(() => {
+                document.querySelector('.typewriter').style.animation = 'none';
+            }, 3500);
+            
+            // Плавная прокрутка
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+        });
+    </script>
 </body>
 </html>
